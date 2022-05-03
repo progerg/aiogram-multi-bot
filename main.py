@@ -111,7 +111,7 @@ async def my_bots(message: types.Message):
         await message.answer(f"{bot.bot_id} - {bot.username} - {bot.token}")
 
 
-async def echo(message: types.Message, polling_manager: PollingManager, dp_for_new_bot: Dispatcher):
+async def echo(message: types.Message):
     await message.answer(message.text)
 
 
