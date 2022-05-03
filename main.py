@@ -108,10 +108,15 @@ async def my_bots(message: types.Message):
         result = await sess.execute(select(BotToken))
         bot_tokens = result.scalars().all()
     for bot in bot_tokens:
-        await message.answer(f"{bot.bot_id} - {bot.username} - {bot.token}")
+        await message.answer(f"Бот №{bot.bot_id}\n{bot.username}\n{bot.token}\nКоличество ответов: {bot.count}\n\n")
 
 
-async def echo(message: types.Message):
+async def echo(message: types.Message, bot: Bot):
+    async with create_session() as sess:
+        result = await sess.execute(select(BotToken).where(BotToken.bot_id == bot.id))
+        bot_ = result.scalars().first()
+        bot_.count += 1
+        await sess.commit()
     await message.answer(message.text)
 
 
