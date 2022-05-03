@@ -12,3 +12,15 @@ host = 'DB_HOST_HERE'
 
 TOKEN = 'MAIN_BOT_TOKEN_HERE'
 ```
+
+После установить все зависимости
+
+```bash
+pip install -r requirements.txt
+```
+
+и запустить самого бота
+
+```bash
+python3 main.py
+```
